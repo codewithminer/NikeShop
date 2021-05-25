@@ -1,7 +1,8 @@
-package com.example.nikeshop
+package com.example.nikeshop.feature.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.nikeshop.NikeActivity
+import com.example.nikeshop.R
 
 class MainActivity : NikeActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
