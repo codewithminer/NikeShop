@@ -2,7 +2,7 @@ package com.example.nikeshop.feature.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.nikeshop.NikeViewModel
+import com.example.nikeshop.common.NikeViewModel
 import com.example.nikeshop.data.Product
 import com.example.nikeshop.data.repository.ProductRepository
 import kotlinx.coroutines.launch

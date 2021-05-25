@@ -12,7 +12,7 @@ interface ApiService {
 
 fun createApiServiceInstance(): ApiService{
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://expertdevelopers.ir/api/v1")
+        .baseUrl("http://expertdevelopers.ir/api/v1/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

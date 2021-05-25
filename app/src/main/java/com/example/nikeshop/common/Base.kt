@@ -1,4 +1,4 @@
-package com.example.nikeshop
+package com.example.nikeshop.common
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ abstract class NikeFragment: Fragment(), NikeView {
     }
 }
 
-abstract class NikeActivity: AppCompatActivity(), NikeView{
+abstract class NikeActivity: AppCompatActivity(), NikeView {
     override fun setProgressIndicator(mustShow: Boolean) {
         TODO("Not yet implemented")
     }

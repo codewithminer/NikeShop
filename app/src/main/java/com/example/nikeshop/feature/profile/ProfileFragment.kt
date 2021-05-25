@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.nikeshop.NikeFragment
+import com.example.nikeshop.common.NikeFragment
 import com.example.nikeshop.R
 
 class ProfileFragment: NikeFragment() {
@@ -14,6 +14,6 @@ class ProfileFragment: NikeFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 }
