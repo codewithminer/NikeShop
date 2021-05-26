@@ -3,5 +3,5 @@
     <item android:alpha="1.0" android:color="?attr/colorPrimary"
         android:state_checked="true"
         />
-    <item android:alpha="0.6" android:color="?attr/colorOnSurface"/>
+    <item android:alpha="0.7" android:color="?attr/colorOnSurface"/>
 </selector>

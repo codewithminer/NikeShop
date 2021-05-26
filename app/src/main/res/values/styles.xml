@@ -9,6 +9,7 @@
     </style>
 
     <style name="myItemTextAppearanceActive" parent="TextAppearance.MyTheme.Caption">
-        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/primary_extra_bold</item>
+        <item name="android:fontFamily">@font/primary_extra_bold</item>
     </style>
 </resources>
