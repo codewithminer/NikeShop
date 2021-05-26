@@ -12,7 +12,8 @@ class MainViewModel(val productRepository: ProductRepository): NikeViewModel() {
     val productsLiveData = MutableLiveData<List<Product>>()
 
     init {
-    callGetProduct()
+        progressBarLiveData.value = true
+        callGetProduct()
     }
 
     private fun callGetProduct() = viewModelScope.launch {
@@ -20,6 +21,7 @@ class MainViewModel(val productRepository: ProductRepository): NikeViewModel() {
     }
 
     private suspend fun getProduct(){
-        productsLiveData.value = productRepository.getProducts()
+        productsLiveData.postValue(productRepository.getProducts())
+        progressBarLiveData.postValue(false)
     }
 }
