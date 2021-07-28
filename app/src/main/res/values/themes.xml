@@ -33,6 +33,7 @@
         <!-- Customize your theme here. -->
 
         <item name="bottomNavigationStyle">@style/myNavigationBottomView</item>
+        <item name="dividerColor">@color/gray</item>
 
     </style>
 

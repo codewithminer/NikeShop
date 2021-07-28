@@ -1,6 +1,7 @@
 package com.example.nikeshop.feature.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,10 @@ class MainFragment: NikeFragment() {
 
         mainViewModel.progressBarLiveData.observe(viewLifecycleOwner){
             setProgressIndicator(it)
+        }
+
+        mainViewModel.sliderLiveData.observe(viewLifecycleOwner){
+            Log.i("MainFragment", it.toString())
         }
     }
 

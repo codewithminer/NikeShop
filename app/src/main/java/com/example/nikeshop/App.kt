@@ -1,8 +1,11 @@
 package com.example.nikeshop
 
 import android.app.Application
+import com.example.nikeshop.data.repository.BannerRepository
+import com.example.nikeshop.data.repository.BannerRepositoryImpl
 import com.example.nikeshop.data.repository.ProductRepository
 import com.example.nikeshop.data.repository.ProductRepositoryImpl
+import com.example.nikeshop.data.repository.source.BannerRemoteDataSource
 import com.example.nikeshop.data.repository.source.ProductLocalDataSource
 import com.example.nikeshop.data.repository.source.ProductRemoteDataSource
 import com.example.nikeshop.feature.main.MainViewModel
@@ -24,7 +27,8 @@ class App: Application(){
             factory<ProductRepository> { ProductRepositoryImpl(ProductRemoteDataSource(get()),
                 ProductLocalDataSource()
             ) }
-            viewModel { MainViewModel(get()) }
+            factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
+            viewModel { MainViewModel(get(),get()) }
         }
 
         startKoin {
