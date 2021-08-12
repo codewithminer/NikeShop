@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.nikeshop.common.NikeFragment
 import com.example.nikeshop.R
+import com.example.nikeshop.common.convertDpToPixel
+import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -34,7 +36,15 @@ class MainFragment: NikeFragment() {
         }
 
         mainViewModel.sliderLiveData.observe(viewLifecycleOwner){
-            Log.i("MainFragment", it.toString())
+//            Log.i("MainFragment", it.toString())
+            val bannerSliderAdapter = BannerSliderAdapter(this, it)
+            bannerSliderViewPager.adapter = bannerSliderAdapter
+            val viewPagerHeight = (((bannerSliderViewPager.measuredWidth - convertDpToPixel(32f, requireContext())) * 173) / 328).toInt()
+            val layoutParams = bannerSliderViewPager.layoutParams
+            layoutParams.height = viewPagerHeight
+            bannerSliderViewPager.layoutParams = layoutParams
+
+            sliderIndicators.setViewPager2(bannerSliderViewPager)
         }
     }
 
