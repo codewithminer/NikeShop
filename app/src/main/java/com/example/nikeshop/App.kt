@@ -20,7 +20,7 @@ class App: Application(){
 
     override fun onCreate() {
         super.onCreate()
-        Timber.plant()
+        Timber.plant(Timber.DebugTree())
 
         val myModules = module {
             single { createApiServiceInstance() }
