@@ -4,5 +4,7 @@
     <string name="nav_home">خانه</string>
     <string name="nav_profile">پروفایل</string>
     <string name="nav_basket">سبد خرید</string>
+    <string name="latest">جدیدترین ها</string>
+    <string name="viewAll">مشاهده همه</string>
 
 </resources>
