@@ -5,8 +5,8 @@ import com.example.nikeshop.service.ApiService
 
 class ProductRemoteDataSource(val apiService: ApiService): ProductDataSource {
 
-    override suspend fun getProducts(): List<Product> {
-        return apiService.getProduct()
+    override suspend fun getProducts(sort:Int): List<Product> {
+        return apiService.getProduct(sort.toString())
     }
 
     override suspend fun getFavoriteProduct(): List<Product> {

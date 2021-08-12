@@ -4,7 +4,7 @@ import com.example.nikeshop.data.Product
 
 class ProductLocalDataSource: ProductDataSource {
 
-    override suspend fun getProducts(): List<Product> {
+    override suspend fun getProducts(sort:Int): List<Product> {
         TODO("Not yet implemented")
     }
 

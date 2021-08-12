@@ -3,49 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="176dp"
-    android:layout_height="match_parent">
-
+    android:layout_height="wrap_content"
+    android:paddingBottom="12dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginStart="4dp">
 
     <com.example.nikeshop.view.NikeImageView
-        android:id="@+id/imageView"
+        android:id="@+id/productIv"
         android:layout_width="0dp"
         android:layout_height="189dp"
+        app:roundedCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/productTitleTv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        tools:text="TextView"
+        android:layout_marginTop="8dp"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:minLines="2"
+        app:layout_constraintStart_toStartOf="@+id/productIv"
+        app:layout_constraintTop_toBottomOf="@+id/productIv" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/previousPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="TextView"
+        android:textAppearance="?textAppearanceBody2"
+        android:layout_marginTop="4dp"
+        android:textColor="?android:textColorSecondary"
+        app:layout_constraintStart_toStartOf="@+id/productTitleTv"
+        app:layout_constraintTop_toBottomOf="@+id/productTitleTv" />
+
+    <TextView
+        android:id="@+id/currentPriceTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:layout_marginTop="2dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toStartOf="@+id/previousPriceTv"
+        app:layout_constraintTop_toBottomOf="@+id/previousPriceTv" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/favoriteButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:scaleType="centerInside"
+        android:background="@drawable/background_favorite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_favorites" />

@@ -5,10 +5,11 @@ import com.example.nikeshop.data.Product
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("product/list")
-    suspend fun getProduct(): List<Product>
+    suspend fun getProduct(@Query("sort") sort:String): List<Product>
 
     @GET("banner/slider")
     suspend fun getBanner(): List<Banner>

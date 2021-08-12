@@ -4,7 +4,7 @@ import com.example.nikeshop.data.Product
 
 interface ProductRepository {
 
-    suspend fun getProducts(): List<Product>
+    suspend fun getProducts(sort:Int): List<Product>
 
     suspend fun getFavoriteProduct(): List<Product>
 

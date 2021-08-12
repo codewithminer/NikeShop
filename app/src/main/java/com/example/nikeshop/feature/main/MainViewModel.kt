@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.nikeshop.common.NikeViewModel
 import com.example.nikeshop.data.Banner
 import com.example.nikeshop.data.Product
+import com.example.nikeshop.data.SORT_LATEST
+import com.example.nikeshop.data.SORT_POPULAR
 import com.example.nikeshop.data.repository.BannerRepository
 import com.example.nikeshop.data.repository.ProductRepository
 import kotlinx.coroutines.launch
@@ -32,7 +34,7 @@ class MainViewModel(
     }
 
     private suspend fun getProduct(){
-        productsLiveData.postValue(productRepository.getProducts())
+        productsLiveData.postValue(productRepository.getProducts(SORT_POPULAR))
         progressBarLiveData.postValue(false)
     }
 

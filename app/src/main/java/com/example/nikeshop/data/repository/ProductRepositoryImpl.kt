@@ -9,8 +9,8 @@ class ProductRepositoryImpl(
     val localDataSource: ProductLocalDataSource
 ): ProductRepository {
 
-    override suspend fun getProducts(): List<Product> {
-        return remoteDataSource.getProducts()
+    override suspend fun getProducts(sort:Int): List<Product> {
+        return remoteDataSource.getProducts(sort)
     }
 
     override suspend fun getFavoriteProduct(): List<Product> {
