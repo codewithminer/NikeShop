@@ -15,6 +15,7 @@ import com.example.nikeshop.view.NikeImageView
 
 class ProductListAdapter(val imageLoadingService: ImageLoadingService): RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
+    var productOnClickListener: ProductOnClickListener? = null
     var products = ArrayList<Product>()
     set(value) {
         field = value
@@ -34,7 +35,9 @@ class ProductListAdapter(val imageLoadingService: ImageLoadingService): Recycler
             previousPriceTv.text = formatPrice(product.previous_price)
             previousPriceTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             itemView.implementSpringAnimationTrait()
-            itemView.setOnClickListener {  }
+            itemView.setOnClickListener {
+                productOnClickListener?.onProductClick(product)
+            }
         }
     }
 
@@ -45,4 +48,8 @@ class ProductListAdapter(val imageLoadingService: ImageLoadingService): Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bindProduct(products[position])
 
     override fun getItemCount(): Int  = products.size
+
+    interface ProductOnClickListener{
+        fun onProductClick(product:Product)
+    }
 }
