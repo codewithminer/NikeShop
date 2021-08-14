@@ -1,6 +1,7 @@
 package com.example.nikeshop.service
 
 import com.example.nikeshop.data.Banner
+import com.example.nikeshop.data.Comment
 import com.example.nikeshop.data.Product
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,6 +14,9 @@ interface ApiService {
 
     @GET("banner/slider")
     suspend fun getBanner(): List<Banner>
+
+    @GET("comment/list")
+    suspend fun getComment(@Query("product_id") productId:Int): List<Comment>
 }
 
 fun createApiServiceInstance(): ApiService{

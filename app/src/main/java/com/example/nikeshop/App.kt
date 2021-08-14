@@ -2,16 +2,15 @@ package com.example.nikeshop
 
 import android.app.Application
 import android.os.Bundle
-import com.example.nikeshop.data.repository.BannerRepository
-import com.example.nikeshop.data.repository.BannerRepositoryImpl
-import com.example.nikeshop.data.repository.ProductRepository
-import com.example.nikeshop.data.repository.ProductRepositoryImpl
+import com.example.nikeshop.data.repository.*
 import com.example.nikeshop.data.repository.source.BannerRemoteDataSource
+import com.example.nikeshop.data.repository.source.CommentRemoteDataSource
 import com.example.nikeshop.data.repository.source.ProductLocalDataSource
 import com.example.nikeshop.data.repository.source.ProductRemoteDataSource
 import com.example.nikeshop.feature.main.MainViewModel
 import com.example.nikeshop.feature.main.ProductListAdapter
 import com.example.nikeshop.feature.product.ProductDetailViewModel
+import com.example.nikeshop.feature.product.comment.CommentListViewModel
 import com.example.nikeshop.service.FrescoImageLoadingService
 import com.example.nikeshop.service.ImageLoadingService
 import com.example.nikeshop.service.createApiServiceInstance
@@ -38,8 +37,10 @@ class App: Application(){
             ) }
             factory { ProductListAdapter(get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
+            factory<CommentRepository> { CommentRepositoryImpl(CommentRemoteDataSource(get())) }
             viewModel { MainViewModel(get(),get()) }
-            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle) }
+            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle,get()) }
+            viewModel { (productId: Int) -> CommentListViewModel(productId,get()) }
         }
 
         startKoin {

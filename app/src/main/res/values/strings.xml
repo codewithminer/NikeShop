@@ -6,5 +6,8 @@
     <string name="nav_basket">سبد خرید</string>
     <string name="latest">جدیدترین ها</string>
     <string name="viewAll">مشاهده همه</string>
+    <string name="commnets">نظرات کاربران</string>
+    <string name="insertComment">ثبت نظر</string>
+    <string name="viewAllcomments">مشاهده همه نظرات</string>
 
 </resources>
