@@ -2,10 +2,11 @@ package com.example.nikeshop.data.repository.source
 
 import com.example.nikeshop.data.Product
 import com.example.nikeshop.service.ApiService
+import retrofit2.Response
 
 class ProductRemoteDataSource(val apiService: ApiService): ProductDataSource {
 
-    override suspend fun getProducts(sort:Int): List<Product> {
+    override suspend fun getProducts(sort:Int): Response<List<Product>> {
         return apiService.getProduct(sort.toString())
     }
 

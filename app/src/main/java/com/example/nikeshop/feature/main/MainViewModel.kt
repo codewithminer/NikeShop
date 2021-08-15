@@ -34,11 +34,13 @@ class MainViewModel(
     }
 
     private suspend fun getProduct(){
-        productsLiveData.postValue(productRepository.getProducts(SORT_POPULAR))
+        val result = productRepository.getProducts(SORT_POPULAR)
+        productsLiveData.postValue(result.body())
         progressBarLiveData.postValue(false)
     }
 
     private suspend fun getSlider(){
-        sliderLiveData.postValue(bannerRepository.getBanner())
+        val result = bannerRepository.getBanner()
+        sliderLiveData.postValue(result.body())
     }
 }

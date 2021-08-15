@@ -21,7 +21,8 @@ class CommentListViewModel(val productId:Int,  val commentRepository: CommentRep
     }
 
     private suspend fun getComments(){
-        commentsLiveData.value = commentRepository.getAll(productId)
+        val result = commentRepository.getAll(productId)
+        commentsLiveData.value = result.body()
         progressBarLiveData.postValue(false)
     }
 }

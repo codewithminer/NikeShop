@@ -24,7 +24,8 @@ class ProductListViewModel(var sort:Int, val productRepository: ProductRepositor
     }
 
     suspend fun getProduct(){
-        productsLiveData.value = productRepository.getProducts(sort)
+        val result = productRepository.getProducts(sort)
+        productsLiveData.value = result.body()
         progressBarLiveData.value = false
     }
 
