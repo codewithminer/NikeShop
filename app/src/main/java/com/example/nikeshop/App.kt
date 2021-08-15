@@ -7,6 +7,7 @@ import com.example.nikeshop.data.repository.source.BannerRemoteDataSource
 import com.example.nikeshop.data.repository.source.CommentRemoteDataSource
 import com.example.nikeshop.data.repository.source.ProductLocalDataSource
 import com.example.nikeshop.data.repository.source.ProductRemoteDataSource
+import com.example.nikeshop.feature.list.ProductListViewModel
 import com.example.nikeshop.feature.main.MainViewModel
 import com.example.nikeshop.feature.main.ProductListAdapter
 import com.example.nikeshop.feature.product.ProductDetailViewModel
@@ -35,12 +36,13 @@ class App: Application(){
             factory<ProductRepository> { ProductRepositoryImpl(ProductRemoteDataSource(get()),
                 ProductLocalDataSource()
             ) }
-            factory { ProductListAdapter(get()) }
+            factory { (viewType:Int) -> ProductListAdapter(viewType ,get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
             factory<CommentRepository> { CommentRepositoryImpl(CommentRemoteDataSource(get())) }
             viewModel { MainViewModel(get(),get()) }
             viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle,get()) }
             viewModel { (productId: Int) -> CommentListViewModel(productId,get()) }
+            viewModel {(sort: Int) -> ProductListViewModel(sort, get())}
         }
 
         startKoin {

@@ -7,8 +7,10 @@
 
     <ImageView
         android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:scaleType="centerInside"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_marginStart="16dp"
         android:layout_gravity="center_vertical|start"
         app:srcCompat="@drawable/ic_back"/>
@@ -20,6 +22,6 @@
         tools:text="نام صفحه "
         android:textAppearance="?textAppearanceHeadline6"
         android:layout_gravity="center_vertical|start"
-        android:layout_marginStart="48dp"/>
+        android:layout_marginStart="56dp"/>
 
 </FrameLayout>

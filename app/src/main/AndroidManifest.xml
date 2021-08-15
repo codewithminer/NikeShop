@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NikeShop">
         <activity
+            android:name=".feature.list.ProductListActivity"
+            android:exported="true" />
+        <activity
             android:name=".feature.product.comment.CommentListActivity"
             android:exported="true" />
         <activity
