@@ -13,6 +13,7 @@ class CommentListViewModel(val productId:Int,  val commentRepository: CommentRep
 
     init {
         callGetComment()
+        progressBarLiveData.value = true
     }
 
      private fun callGetComment() = viewModelScope.launch {
@@ -21,5 +22,6 @@ class CommentListViewModel(val productId:Int,  val commentRepository: CommentRep
 
     private suspend fun getComments(){
         commentsLiveData.value = commentRepository.getAll(productId)
+        progressBarLiveData.postValue(false)
     }
 }

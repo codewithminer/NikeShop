@@ -8,29 +8,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_gravity="center_vertical|start"
-                app:srcCompat="@drawable/ic_back"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/commnets"
-                android:textAppearance="?textAppearanceHeadline6"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginStart="48dp"/>
-
-
-        </FrameLayout>
+    <com.example.nikeshop.view.NikeToolBar
+        android:id="@+id/commentListToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:nt_toolbar="@string/insertComment"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -23,7 +23,7 @@
                     android:id="@+id/productIvDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:viewAspectRatio="1"/>
+                    app:viewAspectRatio="1.3"/>
 
             </FrameLayout>
 

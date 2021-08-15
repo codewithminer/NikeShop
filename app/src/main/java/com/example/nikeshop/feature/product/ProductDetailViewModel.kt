@@ -15,6 +15,7 @@ class ProductDetailViewModel(bundle: Bundle,val commentRepository: CommentReposi
     val productLiveData = MutableLiveData<Product>()
     val commentLiveData = MutableLiveData<List<Comment>>()
     init {
+        progressBarLiveData.value = true
         productLiveData.value = bundle.getParcelable(EXTRA_KEY_DATA)
         callGetComment()
     }
@@ -25,6 +26,7 @@ class ProductDetailViewModel(bundle: Bundle,val commentRepository: CommentReposi
 
     private suspend fun getComment(){
         commentLiveData.value = commentRepository.getAll(productLiveData.value!!.id)
+        progressBarLiveData.postValue(false)
 
     }
 }

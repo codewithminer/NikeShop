@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikeshop.R
 import com.example.nikeshop.common.EXTRA_KEY_ID
+import com.example.nikeshop.common.NikeActivity
 import com.example.nikeshop.common.formatPrice
 import com.example.nikeshop.data.Comment
 import com.example.nikeshop.feature.product.comment.CommentAdapter
@@ -23,7 +24,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import timber.log.Timber
 
-class ProductDetailActivity : AppCompatActivity() {
+class ProductDetailActivity : NikeActivity() {
 
     val productDetailViewModel: ProductDetailViewModel by viewModel { parametersOf(intent.extras) }
     val imageLoadingService:ImageLoadingService by inject()
@@ -32,6 +33,11 @@ class ProductDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
+
+
+        productDetailViewModel.progressBarLiveData.observe(this){
+            setProgressIndicator(it)
+        }
 
         productDetailViewModel.productLiveData.observe(this){
             imageLoadingService.load(productIvDetail, it.image)

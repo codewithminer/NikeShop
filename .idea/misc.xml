@@ -12,7 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_favorites.xml" value="0.38229166666666664" />
         <entry key="app/src/main/res/drawable/ic_sort.xml" value="0.38229166666666664" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.38229166666666664" />
-        <entry key="app/src/main/res/layout/activity_comment_list.xml" value="0.36614583333333334" />
+        <entry key="app/src/main/res/layout/activity_comment_list.xml" value="0.27848101265822783" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/fragment_banner.xml" value="0.36614583333333334" />
@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/item_comment.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/item_prodcuct.xml" value="0.67" />
         <entry key="app/src/main/res/layout/view_loading.xml" value="0.36614583333333334" />
+        <entry key="app/src/main/res/layout/view_toolbar.xml" value="0.25" />
       </map>
     </option>
   </component>
