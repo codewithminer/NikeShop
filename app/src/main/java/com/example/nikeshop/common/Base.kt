@@ -1,17 +1,25 @@
 package com.example.nikeshop.common
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nikeshop.R
+import com.example.nikeshop.feature.auth.AuthActivity
+import com.google.android.material.snackbar.Snackbar
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.lang.IllegalStateException
 
 abstract class NikeFragment: Fragment(), NikeView {
@@ -20,6 +28,16 @@ abstract class NikeFragment: Fragment(), NikeView {
 
     override val viewContext: Context?
         get() = context
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
 }
 
 abstract class NikeActivity: AppCompatActivity(), NikeView {
@@ -41,6 +59,18 @@ abstract class NikeActivity: AppCompatActivity(), NikeView {
     override val viewContext: Context?
         get() = this
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        EventBus.getDefault().register(this)
+    }
+
+
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
 }
 
 interface NikeView{
@@ -57,6 +87,29 @@ interface NikeView{
 
                 loadingView?.visibility = if (mustShow) View.VISIBLE else View.GONE
             }
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun showError(nikeException: NikeException){
+        EventBus.getDefault().unregister(nikeException)
+        viewContext?.let {
+            when (nikeException.type) {
+                NikeException.Type.SIMPLE -> showSnackBar(
+                    nikeException.serverMessage ?: it.getString(nikeException.userFriendlyMessage)
+                )
+
+                NikeException.Type.AUTH -> {
+                    it.startActivity(Intent(it, AuthActivity::class.java))
+                    Toast.makeText(it, nikeException.serverMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    fun showSnackBar(message:String, duration:Int = Snackbar.LENGTH_SHORT){
+        rootView?.let {
+            Snackbar.make(it, message, duration).show()
         }
     }
 }

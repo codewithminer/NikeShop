@@ -3,10 +3,7 @@ package com.example.nikeshop
 import android.app.Application
 import android.os.Bundle
 import com.example.nikeshop.data.repository.*
-import com.example.nikeshop.data.repository.source.BannerRemoteDataSource
-import com.example.nikeshop.data.repository.source.CommentRemoteDataSource
-import com.example.nikeshop.data.repository.source.ProductLocalDataSource
-import com.example.nikeshop.data.repository.source.ProductRemoteDataSource
+import com.example.nikeshop.data.repository.source.*
 import com.example.nikeshop.feature.list.ProductListViewModel
 import com.example.nikeshop.feature.main.MainViewModel
 import com.example.nikeshop.feature.main.ProductListAdapter
@@ -39,10 +36,13 @@ class App: Application(){
             factory { (viewType:Int) -> ProductListAdapter(viewType ,get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
             factory<CommentRepository> { CommentRepositoryImpl(CommentRemoteDataSource(get())) }
+            factory<CartRepository> { CartRepositoryImpl(CartRemoteDataSource(get())) }
+
             viewModel { MainViewModel(get(),get()) }
-            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle,get()) }
+            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle,get(), get()) }
             viewModel { (productId: Int) -> CommentListViewModel(productId,get()) }
             viewModel {(sort: Int) -> ProductListViewModel(sort, get())}
+
         }
 
         startKoin {
