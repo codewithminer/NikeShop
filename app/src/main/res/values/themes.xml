@@ -40,4 +40,15 @@
 
     </style>
 
+    <style name="Theme.Nike.AuthTheme" parent="Theme.NikeShop">
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="materialButtonStyle">@style/Theme.Nike.AuthTheme.Button</item>
+
+    </style>
+    
+    
 </resources>

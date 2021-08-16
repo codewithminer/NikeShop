@@ -38,9 +38,6 @@ class ProductDetailViewModel(
 
     }
 
-      fun CallAddToCart() = viewModelScope.launch{
-         onAddToCart()
-    }
 
     suspend fun onAddToCart(): Response<AddToCartResponse>{
        return cartRepository.addToCart(productLiveData.value!!.id)

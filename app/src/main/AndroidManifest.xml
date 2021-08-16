@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NikeShop">
         <activity
-            android:name=".feature.auth.AuthActivity"
+            android:name=".feature.auth.AuthActivity" android:theme="@style/Theme.Nike.AuthTheme"
             android:exported="true" />
         <activity
             android:name=".feature.list.ProductListActivity"

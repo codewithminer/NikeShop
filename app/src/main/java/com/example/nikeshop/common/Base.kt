@@ -59,12 +59,11 @@ abstract class NikeActivity: AppCompatActivity(), NikeView {
     override val viewContext: Context?
         get() = this
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun onResume() {
         EventBus.getDefault().register(this)
+        super.onResume()
     }
-
-
 
     override fun onStop() {
         EventBus.getDefault().unregister(this)
