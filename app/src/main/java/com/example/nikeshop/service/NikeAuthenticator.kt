@@ -37,7 +37,7 @@ class NikeAuthenticator: Authenticator, KoinComponent {
     }
 
     fun refreshToken():String{
-        val response: retrofit2.Response<TokenResponse> = apiService.refreshTokent(JsonObject().apply {
+        val response: retrofit2.Response<TokenResponse> = apiService.refreshToken(JsonObject().apply {
             addProperty("grand_type", "refresh_token")
             addProperty("refresh_token", TokenContainer.refreshToken)
             addProperty("client_id", CLIENT_ID)

@@ -9,7 +9,7 @@ object TokenContainer {
         private set
 
     fun update(token: String?, refreshToken: String?) {
-        Timber.i("access token -> ${token?.substring(0,10)} refresh token -> $refreshToken")
+        Timber.i("access token -> ${token?.substring(0,10)} refresh token -> ${refreshToken?.substring(0,10)}")
         this.token = token
         this.refreshToken = refreshToken
     }

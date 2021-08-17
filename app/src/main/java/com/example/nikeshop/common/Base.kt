@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModel
 import com.example.nikeshop.R
 import com.example.nikeshop.feature.auth.AuthActivity
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.disposables.CompositeDisposable
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -114,5 +115,11 @@ interface NikeView{
 }
 
 abstract class NikeViewModel: ViewModel(){
+    val compositeDisposable = CompositeDisposable()
     val progressBarLiveData = MutableLiveData<Boolean>()
+
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
+    }
 }

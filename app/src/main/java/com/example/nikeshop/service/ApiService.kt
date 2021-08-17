@@ -16,17 +16,34 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
+
     @GET("product/list")
     suspend fun getProduct(@Query("sort") sort:String): Response<List<Product>>
+
 
     @GET("banner/slider")
     suspend fun getBanner(): Response<List<Banner>>
 
+
     @GET("comment/list")
     suspend fun getComment(@Query("product_id") productId:Int): Response<List<Comment>>
 
+
     @POST("cart/add")
     suspend fun addToCart(@Body jsonObject: JsonObject): Response<AddToCartResponse>
+
+    @POST("cart/remove")
+    fun removeItemFromCart(@Body jsonObject: JsonObject): Single<MessageResponse>
+
+    @GET("cart/list")
+    fun getCart(): Single<CartResponse>
+
+    @POST("cart/changeCount")
+    fun changeCount(@Body jsonObject: JsonObject): Single<AddToCartResponse>
+
+    @GET("cart/count")
+    fun getCartItemCount():Single<CartItemCount>
+
 
     @POST("auth/token")
     fun login(@Body jsonObject: JsonObject): Single<TokenResponse>
@@ -35,7 +52,7 @@ interface ApiService {
     fun signUp(@Body jsonObject: JsonObject): Single<MessageResponse>
 
     @POST("auth/token")
-    fun refreshTokent(@Body jsonObject: JsonObject): Call<TokenResponse>
+    fun refreshToken(@Body jsonObject: JsonObject): Call<TokenResponse>
 
 }
 

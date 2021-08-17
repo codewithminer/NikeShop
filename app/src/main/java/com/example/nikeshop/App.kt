@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.nikeshop.data.repository.*
 import com.example.nikeshop.data.repository.source.*
 import com.example.nikeshop.feature.auth.AuthViewModel
+import com.example.nikeshop.feature.cart.CartViewModel
 import com.example.nikeshop.feature.list.ProductListViewModel
 import com.example.nikeshop.feature.main.MainViewModel
 import com.example.nikeshop.feature.main.ProductListAdapter
@@ -55,6 +56,7 @@ class App: Application(){
             viewModel { (productId: Int) -> CommentListViewModel(productId,get()) }
             viewModel {(sort: Int) -> ProductListViewModel(sort, get())}
             viewModel {AuthViewModel(get())}
+            viewModel {CartViewModel(get())}
 
         }
 

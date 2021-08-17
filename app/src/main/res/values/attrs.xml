@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="dividerColor" type="color"></attr>
-
+    <attr name="windowBackgroundColorSub" format="color"/>
     <declare-styleable name="NikeToolBar">
         <attr name="nt_toolbar" format="string"/>
     </declare-styleable>

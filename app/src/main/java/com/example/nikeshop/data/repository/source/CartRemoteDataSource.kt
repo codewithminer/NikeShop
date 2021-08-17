@@ -6,6 +6,7 @@ import com.example.nikeshop.data.CartResponse
 import com.example.nikeshop.data.MessageResponse
 import com.example.nikeshop.service.ApiService
 import com.google.gson.JsonObject
+import io.reactivex.Single
 import retrofit2.Response
 
 class CartRemoteDataSource(val apiService: ApiService): CartDataSource {
@@ -16,19 +17,18 @@ class CartRemoteDataSource(val apiService: ApiService): CartDataSource {
         }
     )
 
-    override suspend fun get(): CartResponse {
-        TODO("Not yet implemented")
-    }
+    override fun get(): Single<CartResponse> = apiService.getCart()
 
-    override suspend fun remove(cartItemId: Int): Response<MessageResponse> {
-        TODO("Not yet implemented")
-    }
+    override fun remove(cartItemId: Int): Single<MessageResponse>  = apiService.removeItemFromCart(
+        JsonObject().apply {
+            addProperty("cart_item_id", cartItemId)
+        }
+    )
 
-    override suspend fun changeCount(cartItemId: Int, count: Int): Response<AddToCartResponse> {
-        TODO("Not yet implemented")
-    }
+    override fun changeCount(cartItemId: Int, count: Int): Single<AddToCartResponse>  = apiService.changeCount(JsonObject().apply {
+        addProperty("cart_item_id",cartItemId)
+        addProperty("count",count)
+    })
 
-    override suspend fun getCartItemsCount(): Response<CartItemCount> {
-        TODO("Not yet implemented")
-    }
+    override fun getCartItemsCount(): Single<CartItemCount> = apiService.getCartItemCount()
 }
