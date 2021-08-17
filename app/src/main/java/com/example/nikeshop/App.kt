@@ -41,6 +41,7 @@ class App: Application(){
                 ProductLocalDataSource()
             ) }
 
+            single { UserLocalDataSource(get()) }
             single<SharedPreferences> { this@App.getSharedPreferences("app_settings", MODE_PRIVATE) }
 
             single<UserRepository> { UserRepositoryImpl(UserRemoteDataSource(get()), UserLocalDataSource(get())) }

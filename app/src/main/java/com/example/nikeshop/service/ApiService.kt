@@ -5,6 +5,7 @@ import com.google.gson.JsonObject
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -32,6 +33,9 @@ interface ApiService {
 
     @POST("user/register")
     fun signUp(@Body jsonObject: JsonObject): Single<MessageResponse>
+
+    @POST("auth/token")
+    fun refreshTokent(@Body jsonObject: JsonObject): Call<TokenResponse>
 
 }
 

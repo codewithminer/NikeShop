@@ -27,17 +27,22 @@ class LoginFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         loginBtn.setOnClickListener {
             viewModel.login(et_email.text.toString(), et_password.text.toString())
                 .subscribeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : NikeCompletableObserver(compositeDisposable) {
                     override fun onComplete() {
                         requireActivity().finish()
                     }
                 })
+        }
 
-
+        signUpLinkBtn.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_container, SignUpFragment())
+            }.commit()
         }
     }
 

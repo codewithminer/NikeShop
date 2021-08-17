@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/email"
+            android:gravity="right|center_vertical"
             android:layout_marginTop="16dp"/>
 
         <EditText
@@ -45,6 +46,7 @@
             style="@style/Theme.Nike.AuthTheme.EditText"
             android:layout_width="@dimen/authETWidth"
             android:inputType="textPassword"
+            android:gravity="right|center_vertical"
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:layout_marginTop="16dp"/>
@@ -77,7 +79,7 @@
             android:alpha=".4"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/signUpBtn"
+            android:id="@+id/signUpLinkBtn"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
