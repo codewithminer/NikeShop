@@ -1,23 +1,24 @@
 package com.example.nikeshop.feature.cart
 
 import androidx.lifecycle.MutableLiveData
+import com.example.nikeshop.R
 import com.example.nikeshop.common.NikeViewModel
 import com.example.nikeshop.common.asyncNetworkRequest
-import com.example.nikeshop.data.CartItem
-import com.example.nikeshop.data.CartResponse
-import com.example.nikeshop.data.PurchaseDetail
-import com.example.nikeshop.data.TokenContainer
+import com.example.nikeshop.data.*
 import com.example.nikeshop.data.repository.CartRepository
 import com.sevenlearn.nikestore.common.NikeSingleObserver
 import io.reactivex.Completable
+import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
 
 class CartViewModel(val cartRepository: CartRepository): NikeViewModel() {
     val cartItemLiveData = MutableLiveData<List<CartItem>>()
     val purchaseDetailLiveData = MutableLiveData<PurchaseDetail>()
+    val emptyStateLiveData = MutableLiveData<EmptyState>()
 
     private fun getCartItem(){
         if (!TokenContainer.token.isNullOrEmpty()){
+            emptyStateLiveData.value = EmptyState(false)
             progressBarLiveData.postValue(true)
             cartRepository.get()
                 .asyncNetworkRequest()
@@ -27,16 +28,31 @@ class CartViewModel(val cartRepository: CartRepository): NikeViewModel() {
                         if(t.cart_items.isNotEmpty()){
                             cartItemLiveData.value = t.cart_items
                             purchaseDetailLiveData.value = PurchaseDetail(t.total_price, t.shipping_cost, t.payable_price)
+                        }else{
+                            emptyStateLiveData.value = EmptyState(true, R.string.cartEmptyState)
                         }
 
                     }
                 })
-        }
+        }else
+            emptyStateLiveData.value = EmptyState(true, R.string.cartEmptyStateLoginRequired, true)
     }
 
     fun removeItemFromCart(cartItem: CartItem): Completable{
-        return cartRepository.remove(cartItem.cart_item_id).doFinally {
+        return cartRepository.remove(cartItem.cart_item_id).doAfterSuccess {
             calculateAndPublishPurchaseDetail()
+            val cartItemCount = EventBus.getDefault().getStickyEvent(CartItemCount::class.java)
+            cartItemCount?.let {
+                it.count -= cartItem.count
+                EventBus.getDefault().postSticky(it)
+            }
+            Timber.i(cartItemLiveData.value.toString())
+//            if(cartItemLiveData.value.isNullOrEmpty())
+//                emptyStateLiveData.postValue(EmptyState(true, R.string.cartEmptyState))
+            cartItemLiveData.value?.let {
+                if(it.isEmpty())
+                    emptyStateLiveData.postValue(EmptyState(true, R.string.cartEmptyState))
+                }
         }.ignoreElement()
     }
 
@@ -44,6 +60,11 @@ class CartViewModel(val cartRepository: CartRepository): NikeViewModel() {
         return cartRepository.changeCount(cartItem.cart_item_id, ++cartItem.count)
             .doAfterSuccess {
                 calculateAndPublishPurchaseDetail()
+                val cartItemCount = EventBus.getDefault().getStickyEvent(CartItemCount::class.java)
+                cartItemCount?.let {
+                    it.count += 1
+                    EventBus.getDefault().postSticky(it)
+                }
             }.doOnError {
                 Timber.i(cartItem.toString())
                 --cartItem.count
@@ -56,6 +77,11 @@ class CartViewModel(val cartRepository: CartRepository): NikeViewModel() {
         cartRepository.changeCount(cartItem.cart_item_id, --cartItem.count)
             .doAfterSuccess {
                 calculateAndPublishPurchaseDetail()
+                val cartItemCount = EventBus.getDefault().getStickyEvent(CartItemCount::class.java)
+                cartItemCount?.let {
+                    it.count -= 1
+                    EventBus.getDefault().postSticky(it)
+                }
             }
             .ignoreElement()
 

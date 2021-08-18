@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/ic_favorites.xml" value="0.38229166666666664" />
         <entry key="app/src/main/res/drawable/ic_increase_cart_item_count.xml" value="0.36944444444444446" />
         <entry key="app/src/main/res/drawable/ic_sort.xml" value="0.38229166666666664" />
+        <entry key="app/src/main/res/drawable/ic_undraw_empty_cart.xml" value="0.36574074074074076" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.38229166666666664" />
         <entry key="app/src/main/res/drawable/ic_view_type_large.xml" value="0.3764102564102564" />
         <entry key="app/src/main/res/layout/activity_comment_list.xml" value="0.27848101265822783" />
@@ -33,6 +34,7 @@
         <entry key="app/src/main/res/layout/item_prodcuct_large.xml" value="0.365625" />
         <entry key="app/src/main/res/layout/item_prodcuct_small.xml" value="0.365625" />
         <entry key="app/src/main/res/layout/item_purchase_details.xml" value="0.36614583333333334" />
+        <entry key="app/src/main/res/layout/view_empty_state.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_loading.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/view_toolbar.xml" value="0.25" />
         <entry key="app/src/main/res/menu/my_bottom_navigation_view.xml" value="0.1875" />

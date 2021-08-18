@@ -11,6 +11,7 @@ import com.example.nikeshop.common.NikeFragment
 import com.example.nikeshop.R
 import com.example.nikeshop.common.EXTRA_KEY_DATA
 import com.example.nikeshop.data.CartItem
+import com.example.nikeshop.feature.auth.AuthActivity
 import com.example.nikeshop.feature.product.ProductDetailActivity
 import com.example.nikeshop.service.ImageLoadingService
 import com.sevenlearn.nikestore.common.NikeCompletableObserver
@@ -19,6 +20,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.item_cart.*
+import kotlinx.android.synthetic.main.view_cart_empty_state.*
+import kotlinx.android.synthetic.main.view_cart_empty_state.view.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -60,6 +63,22 @@ class CartFragment: NikeFragment(), CartItemAdapter.CartItemViewCallBack {
                 adapter.notifyItemChanged(adapter.cartItems.size)
             }
         }
+
+        cartViewModel.emptyStateLiveData.observe(viewLifecycleOwner){
+            if (it.mustShow) {
+                val emptyState = showEmptyState(R.layout.view_cart_empty_state)
+
+                emptyState?.let { view ->
+                    view.emptyStateMessageTv.text = getString(it.messageResId)
+                    view.emptyStateCtaBtn.visibility =
+                        if (it.mustShowCallToActionButton) View.VISIBLE else View.GONE
+                    view.emptyStateCtaBtn.setOnClickListener {
+                        startActivity(Intent(requireContext(), AuthActivity::class.java))
+                    }
+                }
+            } else
+                emptyStateRootView?.visibility = View.VISIBLE
+        }
     }
 
     override fun onStart() {
@@ -74,6 +93,7 @@ class CartFragment: NikeFragment(), CartItemAdapter.CartItemViewCallBack {
             .subscribe(object : NikeCompletableObserver(compositeDisposable){
                 override fun onComplete() {
                     cartItemAdapter?.removeCartItem(cartItem)
+
                 }
             })
 

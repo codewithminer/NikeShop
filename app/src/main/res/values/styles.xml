@@ -29,5 +29,15 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
     </style>
+
+    <style name="Widget.MyTheme.Badge" parent="Widget.MaterialComponents.Badge">
+        <item name="android:textAppearance">@style/TextAppearance.MyTheme.Badge</item>
+    </style>
+
+    <style name="TextAppearance.MyTheme.Badge" parent="TextAppearance.MaterialComponents.Badge">
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">casual</item>
+        <item name="android:fontFamily">casual</item>
+    </style>
     
 </resources>

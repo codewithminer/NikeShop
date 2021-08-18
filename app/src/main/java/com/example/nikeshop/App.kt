@@ -8,6 +8,7 @@ import com.example.nikeshop.data.repository.source.*
 import com.example.nikeshop.feature.auth.AuthViewModel
 import com.example.nikeshop.feature.cart.CartViewModel
 import com.example.nikeshop.feature.list.ProductListViewModel
+import com.example.nikeshop.feature.main.BaseViewModel
 import com.example.nikeshop.feature.main.MainViewModel
 import com.example.nikeshop.feature.main.ProductListAdapter
 import com.example.nikeshop.feature.product.ProductDetailViewModel
@@ -57,6 +58,7 @@ class App: Application(){
             viewModel {(sort: Int) -> ProductListViewModel(sort, get())}
             viewModel {AuthViewModel(get())}
             viewModel {CartViewModel(get())}
+            viewModel {BaseViewModel(get())}
 
         }
 
