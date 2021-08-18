@@ -49,4 +49,24 @@
     <string name="cartEmptyStateCallToAction">ورود به حساب کاربری</string>
     <string name="cartEmptyState">هیچ خبری اینجا نیست!</string>
 
+    <string name="shippingToolbarTitle">انتخاب تحویل گیرنده و شیوه پرداخت</string>
+    <string name="onlinePayment">پرداخت اینترنتی</string>
+    <string name="cashOnDelivery">پرداخت در منزل</string>
+
+    <string name="firstName">نام</string>
+    <string name="lastName">نام خانوادگی</string>
+    <string name="postalCode">کد پستی</string>
+    <string name="phoneNumber">شماه موبایل</string>
+    <string name="address">آدرس</string>
+
+    <string name="checkoutToolbarTitle">رسید پرداخت</string>
+    <string name="returnHome">بازگشت به ضفحه اصلی</string>
+    <string name="orderHistory">سوابق سفارش</string>
+
+    <string name="purchaseStatus">وضعیت سفارش</string>
+    <string name="price">مبلغ</string>
+
+
+
+
 </resources>

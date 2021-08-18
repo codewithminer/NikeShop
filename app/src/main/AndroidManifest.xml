@@ -13,8 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NikeShop">
         <activity
-            android:name=".feature.auth.AuthActivity" android:theme="@style/Theme.Nike.AuthTheme"
+            android:name=".feature.checkout.CheckoutActivity"
             android:exported="true" />
+        <activity
+            android:name=".feature.shipping.ShippingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".feature.auth.AuthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Nike.AuthTheme" />
         <activity
             android:name=".feature.list.ProductListActivity"
             android:exported="true" />
@@ -24,7 +31,8 @@
         <activity
             android:name=".feature.product.ProductDetailActivity"
             android:exported="true" />
-        <activity android:name=".feature.main.MainActivity">
+        <activity android:name=".feature.main.MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -30,6 +30,16 @@
         <item name="android:paddingEnd">16dp</item>
     </style>
 
+    <style name="ShippingTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    
+    <style name="ShippingTextInputEditText" parent="Theme.NikeShop">
+        <item name="android:textSize">14sp</item>
+    </style>
+    
     <style name="Widget.MyTheme.Badge" parent="Widget.MaterialComponents.Badge">
         <item name="android:textAppearance">@style/TextAppearance.MyTheme.Badge</item>
     </style>

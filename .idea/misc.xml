@@ -18,10 +18,12 @@
         <entry key="app/src/main/res/drawable/ic_undraw_empty_cart.xml" value="0.36574074074074076" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.38229166666666664" />
         <entry key="app/src/main/res/drawable/ic_view_type_large.xml" value="0.3764102564102564" />
+        <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_comment_list.xml" value="0.27848101265822783" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/activity_product_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_shipping_acrivity.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_banner.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.365625" />
